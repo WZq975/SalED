@@ -206,46 +206,9 @@ class DenseEDNet(nn.Module):
             nn.ReLU(inplace=True),
             nn.UpsamplingBilinear2d(scale_factor=2),
         )
-        # self.deconv_readout = nn.Sequential(
-        #     nn.Conv2d(132+96+96+270, 256, 3, padding=(1, 1)),
-        #     nn.ReLU(inplace=True),
-        #     nn.UpsamplingBilinear2d(scale_factor=2),
-        #     nn.Conv2d(256, 96, 3, padding=(1, 1)),
-        #     nn.ReLU(inplace=True),
-        #     nn.ConvTranspose2d(96, 3, kernel_size=(8, 8), stride=(2, 2), padding=(3, 3)),
-        #     nn.ReLU(inplace=True),
-        #     nn.Conv2d(3, 1, 1),
-        #     nn.Sigmoid()
-        # )
 
-        # inception v1
-        # self.deconv_inc1 = nn.Sequential(
-        #     nn.Conv2d(132 + 96 + 96 + 270, 256, 3, padding=(1, 1)),
-        #     nn.ReLU(inplace=True)
-        # )
-        # self.deconv_inc2 = nn.Sequential(
-        #     nn.Conv2d(256, 96, 3, padding=(1, 1), dilation=1),
-        #     nn.ReLU(inplace=True)
-        # )
-        # self.deconv_inc3 = nn.Sequential(
-        #     nn.Conv2d(256, 96, 3, padding=(4, 4), dilation=4),
-        #     nn.ReLU(inplace=True)
-        # )
-        # self.deconv_inc4 = nn.Sequential(
-        #     nn.Conv2d(256, 96, 3, padding=(8, 8), dilation=8),
-        #     nn.ReLU(inplace=True)
-        # )
-        # self.deconv_readout = nn.Sequential(
-        #     nn.UpsamplingBilinear2d(scale_factor=2),
-        #     nn.Conv2d(288, 96, 1, padding=(0, 0)),
-        #     nn.ReLU(inplace=True),
-        #     nn.ConvTranspose2d(96, 3, kernel_size=(8, 8), stride=(2, 2), padding=(3, 3)),
-        #     nn.ReLU(inplace=True),
-        #     nn.Conv2d(3, 1, 1),
-        #     nn.Sigmoid()
-        # )
 
-        # 加入inception m v2
+        # inception m v2
         self.deconv_inc1 = nn.Sequential(
             nn.Conv2d(312, 96, 3, padding=(1, 1)),
             nn.ReLU(inplace=True),
@@ -315,35 +278,18 @@ class DenseEDNet(nn.Module):
         )
         self.upsample = nn.UpsamplingBilinear2d(scale_factor=2)
         self.trans3_side1 = nn.Sequential(
-            # nn.Conv2d(1056, 528, 3, padding=(1, 1)),
-            # nn.ReLU(inplace=True),
-            # nn.UpsamplingBilinear2d(scale_factor=2)
+
             nn.ConvTranspose2d(1056, 528, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1)),
             nn.ReLU(inplace=True),
-            # nn.ConvTranspose2d(1056, 528, kernel_size=(3, 3), stride=1, padding=(1, 1)),
-            # nn.ReLU(inplace=True),
-            # nn.UpsamplingBilinear2d(scale_factor=2)
+
         )
         self.trans3_side2 = nn.Sequential(
-            # nn.Conv2d(1056, 528, 3, padding=(1, 1)),
-            # nn.ReLU(inplace=True),
-            # nn.UpsamplingBilinear2d(scale_factor=2),
-            # nn.Conv2d(528, 264, 3, padding=(1, 1)),
-            # nn.ReLU(inplace=True),
-            # nn.UpsamplingBilinear2d(scale_factor=2)
-            # nn.ConvTranspose2d(1056, 528, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1)),
-            # nn.ReLU(inplace=True),
-            # nn.UpsamplingBilinear2d(scale_factor=2),
+
             nn.ConvTranspose2d(528, 264, kernel_size=(4, 4), stride=(2, 2), padding=(1, 1)),
             nn.ReLU(inplace=True),
-            # nn.ConvTranspose2d(528, 264, kernel_size=(3, 3), stride=1, padding=(1, 1)),
-            # nn.ReLU(inplace=True),
-            # nn.UpsamplingBilinear2d(scale_factor=2)
+
         )
-        # self.trans3_side3 = nn.Sequential(
-        #     nn.Conv2d(264, 132, 3, padding=(1, 1)),
-        #     nn.UpsamplingBilinear2d(scale_factor=2)
-        # )
+
         self.trans2_side1 = nn.Sequential(
             # nn.Conv2d(384, 192, 3, padding=(1, 1)),
             # nn.ReLU(inplace=True),
@@ -353,14 +299,6 @@ class DenseEDNet(nn.Module):
             # nn.UpsamplingBilinear2d(scale_factor=2)
         )
 
-        # self.trans2_side2 = nn.Sequential(
-        #     nn.Conv2d(192, 96, 3, padding=(1, 1)),
-        #     nn.UpsamplingBilinear2d(scale_factor=2)
-        # )
-        # self.trans1_side = nn.Sequential(
-        #     nn.Conv2d(192, 96, 3, padding=(1, 1)),
-        #     nn.UpsamplingBilinear2d(scale_factor=2)
-        # )
 
 
     def forward(self, x):
