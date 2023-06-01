@@ -5,7 +5,7 @@
 [Google drive](https://drive.google.com/drive/folders/1cb3XsuY3QuLCknkgjt_3vqN-C79XoxzZ?usp=sharing)
 
 ## Acknowledgements
-The model uses DenseNet code from 
+The model uses DenseNet code from https://github.com/gpleiss/efficient_densenet_pytorch/tree/master.
 
 ## Citation
 ```
