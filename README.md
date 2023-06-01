@@ -2,7 +2,7 @@
 [SalED: Saliency prediction with a pithy encoder-decoder architecture sensing local and global information](https://www.sciencedirect.com/science/article/pii/S0262885621000548)
 
 ## Weights
-[Google drive](https://drive.google.com/file/d/1BUCs2YZykusyXLMYwaniyQ9wuOBKyKpN/view?usp=share_link)
+[Google drive](https://drive.google.com/drive/folders/1cb3XsuY3QuLCknkgjt_3vqN-C79XoxzZ?usp=sharing)
 
 ## Citation
 ```
